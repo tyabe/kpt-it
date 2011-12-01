@@ -1,0 +1,7 @@
+---
+:orm: mongoid
+:test: rspec
+:mock: none
+:script: jquery
+:renderer: erb
+:stylesheet: scss
