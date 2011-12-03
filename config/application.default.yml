@@ -11,4 +11,5 @@ test:
   <<: *defaults
 
 production:
+  <<: *defaults
 
