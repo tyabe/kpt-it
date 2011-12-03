@@ -6,6 +6,10 @@ class KptIt < Padrino::Application
 
   enable :sessions
 
+  Pusher.app_id = Setting.pusher.app_id
+  Pusher.key    = Setting.pusher.key
+  Pusher.secret = Setting.pusher.secret
+
   get '/' do
     "Hello Padrino!"
   end

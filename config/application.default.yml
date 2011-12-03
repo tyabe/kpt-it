@@ -1,0 +1,14 @@
+defaults: &defaults
+  pusher:
+    app_id: "your_pusher_app_id"
+    key: "your_pusher_key"
+    secret: "your_pusher_secret"
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+

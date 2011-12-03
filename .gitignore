@@ -7,3 +7,4 @@ vendor/gems/*
 .sass-cache/*
 .rvmrc
 .rbenv-version
+config/application.yml

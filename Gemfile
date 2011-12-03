@@ -30,3 +30,5 @@ gem 'padrino', '0.10.5'
 # end
 
 gem 'heroku', :require => false
+gem 'settingslogic'
+gem 'pusher'
