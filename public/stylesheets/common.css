@@ -42,6 +42,13 @@ header#globalHeader .inhead {
 		border-top-left-radius: 0;
 		vertical-align:top;
 	}
+	#contents .textarea div{
+    display:none;
+  }
+	#contents .textarea div.active{
+    display:block;
+  }
+
 		#contents .textarea textarea {
 			width:580px;
 			min-height:60px;
