@@ -1,19 +1,38 @@
 <%= link_to "all clear", url(:posts, :destroy), method: :delete %>
 
-<div class="content">
+<ul class="tabs" data-tabs="tabs">
   <% %w[keep problem try].each do |type| -%>
-    <h3><%= type.camelize %></h3>
-  <div class="well">
+  <li class="<%= @type == type ? 'active' : '' %>">
+    <a href="#<%= type %>"><%= type.camelize %></a>
+  </li>
+  <% end -%>
+</ul>
+
+<div class="pill-content">
+  <% %w[keep problem try].each do |type| -%>
+  <div class="<%= @type == type ? 'active' : '' %>" id="<%= type %>">
     <% form_for @post, url(:posts, :index, type: type), method: :post do |f| %>
       <p>
       <%= f.text_field :body, :class=>"xxlarge", :placeholder=>"input #{type}" %>
       <%= f.submit "Save", :class=>"btn primary" %>
       </p>
     <% end %>
-    <% Post.where(type: type).each do | post | -%>
-      <p><%= post.body %></p>
-    <% end -%>
   </div>
   <% end -%>
-
 </div>
+
+<% %w[keep problem try].each do |type| -%>
+<div class="well">
+  <% Post.where(type: type).each do | post | -%>
+    <p><%= post.body %></p>
+  <% end -%>
+</div>
+<% end -%>
+
+<script>
+  $(function () {
+    $('.tabs').bind('change', function(e){
+      console.log(e);
+    })
+  })
+</script>
