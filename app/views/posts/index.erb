@@ -44,7 +44,7 @@
     });
 
     <% %w[keep problem try].each do |type| -%>
-    $("#form_<%= type %>").submit(function(){return $("#post_<%= type %>_body").val().trim() > 0 ? true : false;});
+    $("#form_<%= type %>").submit(function(){return $("#post_<%= type %>_body").val().trim() ? true : false;});
     <% end -%>
 
   })
