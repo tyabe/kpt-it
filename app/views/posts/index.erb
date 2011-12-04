@@ -11,12 +11,12 @@
 <div class="pill-content">
   <% %w[keep problem try].each do |type| -%>
   <div class="<%= @type == type ? 'active' : '' %>" id="<%= type %>">
-    <% form_for @post, url(:posts, :index, type: type), method: :post do |f| %>
+    <form id="form_<%= type %>" accept-charset="UTF-8" action="/posts/<%= type %>" method="post">
       <p>
-      <%= f.text_field :body, :class=>"xxlarge", :placeholder=>"input #{type}" %>
-      <%= f.submit "Save", :class=>"btn primary" %>
+        <input id="post_<%= type %>_body" class="xxlarge" type="text" name="post[body]" placeholder="input <%= type %>">
+        <input class="btn primary" type="submit" value="Save">
       </p>
-    <% end %>
+    </form>
   </div>
   <% end -%>
 </div>
@@ -41,6 +41,11 @@
 
     $('.tabs').bind('change', function(e){
       console.log(e);
-    })
+    });
+
+    <% %w[keep problem try].each do |type| -%>
+    $("#form_<%= type %>").submit(function(){return $("#post_<%= type %>_body").val().trim() > 0 ? true : false;});
+    <% end -%>
+
   })
 </script>
