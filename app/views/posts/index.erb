@@ -32,7 +32,7 @@
 <script src="http://js.pusherapp.com/1.9/pusher.min.js"></script>
 <script>
   $(function () {
-    var pusher  = new Pusher('<%= Setting.pusher.key %>');
+    var pusher  = new Pusher('<%= Pusher.key||ENV['PUSHER_KEY'] %>');
     var channel = pusher.subscribe("post-channel");
     channel.bind("post-created-event", function(data) {
       console.log(data);
