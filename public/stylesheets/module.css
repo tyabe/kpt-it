@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* ===================================================================
+ style info : ヘッダーやフッターなどサイト内共通
+=================================================================== */
+
+/*----------------------------------------------------
+	header#globalHeader
+----------------------------------------------------*/
+header#globalHeader {
+	background:#333;
+	min-height:60px;
+	padding:10px 0 0 0;
+	margin:0;
+	position:relative;
+	z-index:10;
+}
+
+
+
+/*----------------------------------------------------
+	#contents（メインとサイド）
+----------------------------------------------------*/
+#contents {
+	width:960px;
+	margin:0 auto;
+	/zoom: 1;
+	text-align:left;
+	position:relative;
+	margin-bottom: 20px;
+	z-index:100;
+}
+
+#contents #main {
+	padding:100px 0 0 0;
+}
+
+/*----------------------------------------------------
+	footer#globalFooter
+----------------------------------------------------*/
+footer#globalFooter {
+	background:#333;
+	clear: both;
+	color:#fff;
+	
+}
+
+footer#globalFooter ul {
+	list-style: none;
+}
+
+footer#globalFooter ul li {
+	display: inline;
+	margin-right: 10px;
+}
+
+/* copyright
+----------------------------------------------------*/
+footer#globalFooter p.copyright {
+	text-align: center;
+	padding:5px;
+}
+
+footer#globalFooter p.copyright small {
+}
+

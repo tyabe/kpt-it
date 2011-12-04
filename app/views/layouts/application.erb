@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <title>kpt-it</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -10,49 +10,24 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <%= stylesheet_link_tag    "bootstrap" %>
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-      }
-    </style>
+    <%= stylesheet_link_tag    "import" %>
 
     <%= javascript_include_tag "application", "jquery", "jquery-ujs" %>
     <%= javascript_include_tag "bootstrap-alerts", "bootstrap-tabs" %>
   </head>
   <body>
-
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="container-fluid">
-          <a class="brand" href="#">kpt-it</a>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-          <p class="pull-right"></p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="container">
-        <% flash.each do |name, msg| -%>
-          <div class="<%= alert_message name %>" data-alert="alert">
-            <a class="close" href="#">×</a>
-            <p><%= msg %></p>
-          </div>
-        <% end -%>
-      </div>
+  <header id="globalHeader">
+  <div class="inhead cf">
+    <h1 class="logo">kpi-it</h1>
+  </div>
+  <!-- / #globalHeader -->
+  </header>
 
       <%= yield %>
 
-    </div>
-
-    <footer>
-    <p>&copy; kpt-it 2011</p>
-    </footer>
+    <footer id="globalFooter">
+    <p class="copyright"><small>Copyright© 2011 kpi-it All Rights Reserved.</small></p>
+    <!-- / #globalFooter --></footer>
 
   </body>
 </html>
