@@ -5,6 +5,7 @@ class KptIt < Padrino::Application
   register Padrino::Helpers
 
   enable :sessions
+  enable :include_templates
 
   unless Padrino.env == :production
     Pusher.app_id = Setting.pusher.app_id
@@ -13,7 +14,7 @@ class KptIt < Padrino::Application
   end
 
   get '/' do
-    "Hello Padrino!"
+    redirect '/posts'
   end
 
   ##
