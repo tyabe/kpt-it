@@ -22,15 +22,23 @@
 </div>
 
 <% %w[keep problem try].each do |type| -%>
-<div class="well">
+<div class="well" id="post-<%= type %>">
   <% Post.where(type: type).each do | post | -%>
     <p><%= post.body %></p>
   <% end -%>
 </div>
 <% end -%>
 
+<script src="http://js.pusherapp.com/1.9/pusher.min.js"></script>
 <script>
   $(function () {
+    var pusher  = new Pusher('<%= Setting.pusher.key %>');
+    var channel = pusher.subscribe("post-channel");
+    channel.bind("post-created-event", function(data) {
+      console.log(data);
+      $('div#post-'+data.type).append("<p>"+data.body+"</p>")
+    });
+
     $('.tabs').bind('change', function(e){
       console.log(e);
     })

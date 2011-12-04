@@ -11,6 +11,11 @@ KptIt.controllers :posts do
     post.type = params[:type]
     flash[:error] = "creating post faled.." unless post.save
 
+    Pusher["post-channel"].trigger(
+      "post-created-event",
+      post
+    )
+
     redirect "#{url(:posts, :index)}?type=#{params[:type]}"
   end
 
