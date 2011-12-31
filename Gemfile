@@ -32,3 +32,4 @@ gem 'padrino', '0.10.5'
 gem 'heroku', :require => false
 gem 'settingslogic'
 gem 'pusher'
+gem 'omniauth-twitter'

@@ -135,3 +135,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 .left { float:left;}
 .right {float:right;}
+
+footer{margin-top:17px;border-top:1px solid #eee;}
+p small{font-size:11px;color:#bfbfbf;}
+a{color:#0069d6;text-decoration:none;line-height:inherit;font-weight:inherit;}a:hover{color:#00438a;text-decoration:underline;}

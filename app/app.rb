@@ -3,6 +3,7 @@ class KptIt < Padrino::Application
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
+  register Padrino::Admin::AccessControl
 
   enable :sessions
   enable :include_templates
@@ -13,9 +14,20 @@ class KptIt < Padrino::Application
     Pusher.secret = Setting.pusher.secret
   end
 
-  get '/' do
-    redirect '/posts'
+  use OmniAuth::Builder do
+    provider :twitter, ENV['TWITTER_KEY']||Setting.twitter.key, ENV['TWITTER_SECRET']||Setting.twitter.secret
   end
+
+  set :login_page, "/"
+
+  access_control.roles_for :any do |role|
+    role.protect "/projects"
+  end
+
+  access_control.roles_for :users do |role|
+    role.allow "/projects"
+  end
+
 
   ##
   # Caching support

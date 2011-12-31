@@ -2,16 +2,15 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps # adds created_at and updated_at fields
 
-  # field <name>, :type => <type>, :default => <value>
+  # fields
   field :type, :type => String
   field :body, :type => String
 
-  validates_presence_of :type
-  validates_presence_of :body
+  # validations
+  validates_presence_of :type, :body
 
-  # You can define indexes on documents using the index macro:
-  # index :field <, :unique => true>
+  # referenced
+  belongs_to :author, class_name: "Account"
+  belongs_to :project
 
-  # You can create a composite key in mongoid to replace the default id using the key macro:
-  # key :field <, :another_field, :one_more ....>
 end

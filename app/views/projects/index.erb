@@ -1,0 +1,58 @@
+<% content_for :head do -%>
+<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<%= stylesheet_link_tag "bootstrap.min" %>
+<%= javascript_include_tag "bootstrap-alerts", "bootstrap-tabs" %>
+<script>
+  $(function () {
+    $('.pills').pills();
+  })
+</script>
+<% end -%>
+
+<div class="container">
+  <div class="content">
+
+    <div class="page-header">
+      <h1>
+        <span>
+          <%= current_account.screen_name %>
+        </span>
+      </h1>
+    </div>
+
+    <div class="row">
+      <div class="span16">
+        <ul class="pills">
+          <li class="active"><a href="#manage">管理しているふりかえり(<%= @manage_projects.count %>)</a></li>
+          <li><a href="#join">参加したふりかえり(<%= @join_projects.count %>)</a></li>
+          <li><a href="#create">ふりかえる</a></li>
+        </ul>
+        <div class="pill-content">
+          <div id="manage" class="active">
+            <div class="well">
+              <%= partial 'projects/list', locals: {projects: @manage_projects} %>
+            </div>
+          </div>
+          <div id="join">
+            <div class="well">
+              <%= partial 'projects/list', locals: {projects: @join_projects} %>
+            </div>
+          </div>
+          <div id="create">
+            <div class="well">
+              <% form_for @new_project, '/projects', method: :post, remote: true, class: "form-stacked" do |f| %>
+                <%= partial 'projects/form', locals: {f: f} %>
+                <div class="clearfix">
+                  <%= f.submit "ふりかえりを作成する", class: "btn primary" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

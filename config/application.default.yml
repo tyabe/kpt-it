@@ -3,6 +3,9 @@ defaults: &defaults
     app_id: "your_pusher_app_id"
     key: "your_pusher_key"
     secret: "your_pusher_secret"
+  twitter:
+    twitter_key: "your_twitter_key"
+    twitter_secret: "your_twitter_secret"
 
 development:
   <<: *defaults

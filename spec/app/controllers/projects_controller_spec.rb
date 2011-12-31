@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "PostController" do
+describe "ProjectsController" do
   before do
     get "/"
   end

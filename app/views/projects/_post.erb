@@ -1,0 +1,7 @@
+<div id="<%= post.id %>" class="box" >
+  <% if post.author == current_account -%>
+  <%= link_to "×", "/projects/#{project.token}/#{post.type}/#{post.id}", class: "close",
+  confirm: "削除してよろしいですか？", method: :delete, remote: true %>
+  <% end -%>
+  <p><%=h post.body %></p>
+</div>

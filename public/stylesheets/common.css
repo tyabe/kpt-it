@@ -3,7 +3,6 @@
 body {
 	font-size: 75%;
 	line-height: 1.6em;
-	text-align: center;
 	background-color:none;
 	background:url(../images/bg-body.gif) repeat 0 0;
 }
@@ -20,6 +19,7 @@ header#globalHeader .inhead {
 		text-indent:-99999px;
 		overflow:hidden;
 		background:url(../images/logo.png) no-repeat 0 0;
+    margin-bottom: 0px;
 	}
 
 #contents .textbox {
@@ -155,7 +155,7 @@ header#globalHeader .inhead {
 	margin:0 10px 0 0;
 }
 
-	#main section h2 {
+	#main section h3 {
 		text-align:center;
 		font-size:140%;
 		font-weight:bold;
@@ -204,3 +204,31 @@ header#globalHeader .inhead {
 		border-bottom-right-radius: 10px;
 		border-bottom-left-radius: 10px;
 	}
+
+  h2 {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  p {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 18px;
+    margin-bottom: 9px;
+    word-wrap: break-word;
+  }
+
+  .close {
+    float: right;
+    font-size: 20px;
+    opacity: 0.25;
+    text-shadow: 0 1px 0 #FFFFFF;
+    text-decoration: none;
+  }
+
+  div .box p {
+    margin: 0 15px;
+  }
+
+
+

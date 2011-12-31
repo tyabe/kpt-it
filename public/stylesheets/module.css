@@ -30,7 +30,7 @@ header#globalHeader {
 	z-index:100;
 }
 
-#contents #main {
+#contents #main.cf {
 	padding:100px 0 0 0;
 }
 
