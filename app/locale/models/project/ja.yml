@@ -1,0 +1,8 @@
+ja:
+  models:
+    project:
+      name: ふりかえり
+      attributes:
+        name: 名称
+        description: 説明
+        password: 管理者パスワード

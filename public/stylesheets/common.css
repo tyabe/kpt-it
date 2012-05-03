@@ -205,30 +205,6 @@ header#globalHeader .inhead {
 		border-bottom-left-radius: 10px;
 	}
 
-  h2 {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
-  p {
-    font-size: 13px;
-    font-weight: normal;
-    line-height: 18px;
-    margin-bottom: 9px;
-    word-wrap: break-word;
-  }
-
-  .close {
-    float: right;
-    font-size: 20px;
-    opacity: 0.25;
-    text-shadow: 0 1px 0 #FFFFFF;
-    text-decoration: none;
-  }
-
-  div .box p {
-    margin: 0 15px;
-  }
-
-
-
+#post-modal {
+  width: 490px;
+}

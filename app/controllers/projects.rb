@@ -1,81 +1,91 @@
 KptIt.controllers :projects do
 
-  get :index do
-    @new_project = Project.new
-    @manage_projects = current_account.projects.desc(:created_at)
-    @join_projects = Post.where(author_id: current_account.id).desc(:created_at).map(&:project).uniq # TODO
-    render '/projects/index'
+  get :new do
+    @project = Project.new
+    render '/projects/new'
   end
 
-  post :index, provides: :js do
-    project = current_account.projects.new(params[:project])
-    if project.save
-      %{location.href="/projects/#{project.token}/created"}
+  post :new do
+    @project = Project.new(params[:project])
+    if @project.save
+      session[:admin] = true
+      redirect "/projects/#{@project.token}"
     else
-      %{alert("#{project.errors.full_messages.join("\n")}");}
+      render '/projects/new'
     end
   end
 
-  get :created, map: "/projects/:token/created" do
-    @project = Project.where(token: params[:token]).first
-    return 404 unless @project
-    @url = request.env["REQUEST_URI"].sub("/created",'')
-    render 'projects/created'
-  end
 
-  get :index, with: :token do
-    @project = Project.where(token: params[:token]).first
+  get :index, with: :project_token do
+    @project = Project.where(token: params[:project_token]).first
     return 404 unless @project
     @post = Post.new
-    @type = params[:type] || 'keep'
+    @kind = params[:kind] || 'keep'
     render '/projects/show'
   end
 
-  delete :index, with: :token do
-    project = Project.where(token: params[:token]).first
-    return 404 unless project && project.author == current_account
-
+  delete :index, with: :project_token do
+    project = Project.where(token: params[:project_token]).first
+    return 404 unless project
     project.destroy
-    redirect '/projects'
+    redirect '/'
   end
 
-  %w[keep problem try].each do |type|
-    post type.to_sym, map: "/projects/:token/#{type}", provides: :js do
-      project = Project.where(token: params[:token]).first
-      return 404 unless project
+  post :index, with: :project_token do
+    project = Project.where(token: params[:project_token]).first
+    return 404 unless project
+    session[:admin] = project.has_password?(params[:password])
+    redirect "/projects/#{project.token}"
+  end
 
-      post = project.posts.new(params[:post])
-      post.type = params[:type]
-      post.author = current_account
-
-      if post.save
-        Pusher[project.token].trigger(
-          "post-event",
-          (project.posts.where(type: post.type).count - 1 <= 0 ? %{$("section#post-#{post.type}>div##{post.type}-default").remove();} : "") +
-          %{$("section#post-#{post.type}>h3")} +
-          %{.after("#{js_escape_html(partial('projects/post', locals: {project: project, post: post}))}");}
-        )
-        %{$("#post_#{type}_body").val('').focus();}
-      else
-        %{alert("creating post faled..");}
-      end
+  put :index, with: :project_token do
+    project = Project.where(token: params[:project_token]).first
+    return 404 unless project
+    if session[:admin]
+      project.accept = !project.accept
+      project.save!
+      redirect "/projects/#{project.token}"
+    else
+      return 422
     end
 
-    delete type.to_sym, map: "/projects/:token/#{type}/:id", provides: :js do
-      project = Project.where(token: params[:token]).first
-      return 404 unless project
+  end
 
-      post = project.posts.find(params[:id])
-      if post.author == current_account
-        post.destroy
-        Pusher[project.token].trigger(
-          "post-event",
-          %{$("##{params[:id]}").remove();} +
-            (project.posts.where(type: type).count <= 0 ? %{$("section#post-#{type}>h3").after("<div class='box' id='#{type}-default'><p>&nbsp;<p></div>");} : "")
-        )
-      end
+
+  post :index, map: "/projects/:project_token/:kind", provides: :js do
+    @project = Project.where(token: params[:project_token]).first
+    return 404 unless @project
+
+    @post = @project.posts.new(params[:post])
+    @post.kind = params[:kind]
+    if @project.accept && @post.save
+      session[:posts] ||= []
+      session[:posts] << @post.token
+      Pusher[@project.token].trigger(
+        "post-event",
+        render('/projects/post_result'),
+        params[:socket_id]
+      )
+    else
+      return 422
     end
+  end
 
+
+  delete :post, map: "/projects/:project_token/:post_token", provides: :js do
+    @project = Project.where(token: params[:project_token]).first
+    return 404 unless @project
+    post = @project.posts.where(token: params[:post_token]).first
+    @kind = post.kind
+    if session[:admin] || (session[:posts] && session[:posts].include?(post.token))
+      post.destroy
+      Pusher[@project.token].trigger(
+        "post-event",
+        render('/projects/delete_result')
+      )
+    else
+      return 403
+    end
   end
 
 end

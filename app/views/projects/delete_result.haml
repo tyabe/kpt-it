@@ -1,0 +1,5 @@
+$("##{params[:post_token]}").remove();
+- if @project.posts.where(kind: @kind).count <= 0
+  $("section#post-#{@kind}>h3").after(
+  "<div class='box' id='#{@kind}-default'><p>&nbsp;<p></div>"
+  );

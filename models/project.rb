@@ -1,29 +1,42 @@
-class Project
-  include Mongoid::Document
-  include Mongoid::Timestamps # adds created_at and updated_at fields
+class Project < ActiveRecord::Base
 
   # fields
-  field :name, type: String
-  field :description, type: String
-  field :token, type: String
+  field :name, as: :string
+  field :description, as: :text
+  field :token, as: :string
+  field :crypted_password, as: :string
+  field :accept, as: :boolean, default: true
+
+  timestamps
+
+  attr_accessor :password
 
   # validations
   validates_presence_of :name
+  validates_presence_of :password, unless: :crypted_password?
   validates_length_of :name, in: 0..30
 
   # referenced
-  belongs_to :author, class_name: "Account"
-  has_many :posts, dependent: :delete
+  has_many :posts, dependent: :destroy
 
-  before_create :generate_token
+  # callbacks
+  before_create :generate_token, :encrypt_password
 
-  protected
+  def has_password?(password)
+    ::BCrypt::Password.new(crypted_password) == password
+  end
+
+  private
 
   def generate_token
     loop do
       self.token = SecureRandom.hex
       break unless self.class.where(token: self.token).first
     end
+  end
+
+  def encrypt_password
+    self.crypted_password = ::BCrypt::Password.create(password)
   end
 
 end

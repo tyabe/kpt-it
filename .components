@@ -1,7 +1,7 @@
 ---
-:orm: mongoid
+:orm: mini_record
 :test: rspec
 :mock: none
 :script: jquery
-:renderer: erb
+:renderer: haml
 :stylesheet: scss

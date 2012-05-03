@@ -1,28 +1,48 @@
-if mongo_uri = ENV['MONGOHQ_URL']
-  Mongoid.database = Mongo::Connection.from_uri(mongo_uri).
-    db(URI.parse(mongo_uri).path.gsub(/^\//, ''))
-else
-  # Connection.new takes host, port
-  host = 'localhost'
-  port = Mongo::Connection::DEFAULT_PORT
+ActiveRecord::Base.configurations[:development] = {
+  :adapter => 'sqlite3',
+  :database => Padrino.root('db', 'kpt_it_development.db')
 
-  database_name = case Padrino.env
-    when :development then 'kpt_it_development'
-    when :production  then 'kpt_it_production'
-    when :test        then 'kpt_it_test'
-  end
-  Mongoid.database = Mongo::Connection.new(host, port).db(database_name)
-end
+}
 
-# You can also configure Mongoid this way
-# Mongoid.configure do |config|
-#   name = @settings["database"]
-#   host = @settings["host"]
-#   config.master = Mongo::Connection.new.db(name)
-#   config.slaves = [
-#     Mongo::Connection.new(host, @settings["slave_one"]["port"], :slave_ok => true).db(name),
-#     Mongo::Connection.new(host, @settings["slave_two"]["port"], :slave_ok => true).db(name)
-#   ]
-# end
-#
-# More installation and setup notes are on http://mongoid.org/docs/
+postgres = URI.parse(ENV['DATABASE_URL'] || '')
+
+ActiveRecord::Base.configurations[:production] = {
+  :adapter  => 'postgresql',
+  :encoding => 'utf8',
+  :database => postgres.path[1..-1],
+  :username => postgres.user,
+  :password => postgres.password,
+  :host     => postgres.host
+}
+
+ActiveRecord::Base.configurations[:test] = {
+  :adapter => 'sqlite3',
+  :database => Padrino.root('db', 'kpt_it_test.db')
+
+}
+
+# Setup our logger
+ActiveRecord::Base.logger = logger
+
+# Raise exception on mass assignment protection for Active Record models
+ActiveRecord::Base.mass_assignment_sanitizer = :strict
+
+# Log the query plan for queries taking more than this (works
+# with SQLite, MySQL, and PostgreSQL)
+ActiveRecord::Base.auto_explain_threshold_in_seconds = 0.5
+
+# Doesn't include Active Record class name as root for JSON serialized output.
+ActiveRecord::Base.include_root_in_json = false
+
+# Store the full class name (including module namespace) in STI type column.
+ActiveRecord::Base.store_full_sti_class = true
+
+# Use ISO 8601 format for JSON serialized times and dates.
+ActiveSupport.use_standard_json_time_format = true
+
+# Don't escape HTML entities in JSON, leave that for the #json_escape helper.
+# if you're including raw json in an HTML page.
+ActiveSupport.escape_html_entities_in_json = false
+
+# Now we can estabilish connection with our db
+ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])

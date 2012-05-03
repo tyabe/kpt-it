@@ -130,9 +130,9 @@ ja:
     errors:
       template: &errors_template
         header:
-          one:    "1 つのエラーにより、 %{model} をセーブできませんでした"
-          other:  "%{count} つのエラーにより、 %{model} をセーブできませんでした"
-        body: "以下のフィールドにエラーが存在します"
+          one:    ""
+          other:  ""
+        body: ""
 
   activemodel: &activemodel
     errors:

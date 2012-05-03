@@ -1,10 +1,27 @@
-.DS_Store
-log/**/*
+.bundle
+db/*.db
+*.log
+tmp
 tmp/**/*
-bin/*
 vendor/gems/*
 !vendor/gems/cache/
 .sass-cache/*
+
+# mac
+.DS_Store
+
+# rvm
 .rvmrc
+
+# rbenv
 .rbenv-version
+.rbenv-gemsets
+
+# Gemfile's lock file
+Gemfile.lock
+
+# config file
 config/application.yml
+
+# foreman
+.env

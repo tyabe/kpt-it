@@ -1,33 +1,21 @@
 class KptIt < Padrino::Application
   register ScssInitializer
+  use ActiveRecord::ConnectionAdapters::ConnectionManagement
   register Padrino::Rendering
   register Padrino::Mailer
   register Padrino::Helpers
-  register Padrino::Admin::AccessControl
 
-  enable :sessions
-  enable :include_templates
+  set :sessions, key: '_kpt_it_session'
 
   unless Padrino.env == :production
-    Pusher.app_id = Setting.pusher.app_id
-    Pusher.key    = Setting.pusher.key
-    Pusher.secret = Setting.pusher.secret
+    ::Pusher.app_id = ENV['PUSHER_APP_ID']
+    ::Pusher.key    = ENV['PUSHER_KEY']
+    ::Pusher.secret = ENV['PUSHER_SECRET']
   end
 
-  use OmniAuth::Builder do
-    provider :twitter, ENV['TWITTER_KEY']||Setting.twitter.key, ENV['TWITTER_SECRET']||Setting.twitter.secret
+  get '/' do
+    render :index
   end
-
-  set :login_page, "/"
-
-  access_control.roles_for :any do |role|
-    role.protect "/projects"
-  end
-
-  access_control.roles_for :users do |role|
-    role.allow "/projects"
-  end
-
 
   ##
   # Caching support
