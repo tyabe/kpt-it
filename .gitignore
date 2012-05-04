@@ -18,7 +18,7 @@ vendor/gems/*
 .rbenv-gemsets
 
 # Gemfile's lock file
-Gemfile.lock
+#Gemfile.lock
 
 # config file
 config/application.yml
