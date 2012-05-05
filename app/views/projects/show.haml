@@ -9,7 +9,7 @@
     - %w(keep problem try).each do |kind|
       $('#post_#{kind}').click(function(){
       if($("#post_body").val().trim()) {
-      $('#post_form').attr('action', '/projects/#{@project.token}/#{kind}');
+      $('#post_form').attr('action', '/#{@project.token}/#{kind}');
       $('#post_form').submit();
       $("#post_body").val('');
       $("#post_body").focus();
@@ -25,7 +25,7 @@
       %i(class="icon-edit icon-white")
       投稿する
     - if session[:admin]
-      %a(class="btn btn-large" data-confirm="投稿の受付を終了してよろしいですか？" data-method="put" rel="nofollow" href="/projects/#{@project.token}")
+      %a(class="btn btn-large" data-confirm="投稿の受付を終了してよろしいですか？" data-method="put" rel="nofollow" href="/#{@project.token}")
         %i(class="icon-stop")
         受付終了
     - else
@@ -34,10 +34,10 @@
         管理機能を使う
   - else
     - if session[:admin]
-      %a(class="btn btn-danger btn-large" data-confirm="削除してよろしいですか？" data-method="delete" rel="nofollow" href="/projects/#{@project.token}")
+      %a(class="btn btn-danger btn-large" data-confirm="削除してよろしいですか？" data-method="delete" rel="nofollow" href="/#{@project.token}")
         %i(class="icon-trash icon-white")
         削除する
-      %a(class="btn btn-large" data-confirm="投稿の受付を再開してよろしいですか？" data-method="put" rel="nofollow" href="/projects/#{@project.token}")
+      %a(class="btn btn-large" data-confirm="投稿の受付を再開してよろしいですか？" data-method="put" rel="nofollow" href="/#{@project.token}")
         %i(class="icon-play")
         受付再開
     - else
@@ -46,7 +46,7 @@
         管理機能を使う
 
 %div#post-modal(class="modal hide")
-  = form_for @post, "/projects/#{@project.token}/posts", remote: true, id: :post_form do |f|
+  = form_for @post, "/#{@project.token}/posts", remote: true, id: :post_form do |f|
     %div.modal-header
       %button.close(data-dismiss="modal") &times;
       %h3 ふりかえりを投稿する
@@ -58,7 +58,7 @@
       %a(href="#" id='post_try' class='btn btn-large btn-success')Try
 
 %div#manage-modal(class="modal hide")
-  = form_tag "/projects/#{@project.token}", class: 'form-inline', method: :post, id: :manage_form do |f|
+  = form_tag "/#{@project.token}", class: 'form-inline', method: :post, id: :manage_form do |f|
     %div.modal-header
       %button.close(data-dismiss="modal") &times;
       %h3 管理者パスワードを入力してください

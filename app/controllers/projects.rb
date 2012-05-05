@@ -1,22 +1,22 @@
 KptIt.controllers :projects do
 
-  get :new do
+  get :new, map: '/new' do
     @project = Project.new
     render '/projects/new'
   end
 
-  post :new do
+  post :new, map: '/new' do
     @project = Project.new(params[:project])
     if @project.save
       session[:admin] = true
-      redirect "/projects/#{@project.token}"
+      redirect "/#{@project.token}"
     else
       render '/projects/new'
     end
   end
 
 
-  get :index, with: :project_token do
+  get :index, map: "/:project_token" do
     @project = Project.where(token: params[:project_token]).first
     return 404 unless @project
     @post = Post.new
@@ -24,27 +24,27 @@ KptIt.controllers :projects do
     render '/projects/show'
   end
 
-  delete :index, with: :project_token do
+  delete :index, map: "/:project_token" do
     project = Project.where(token: params[:project_token]).first
     return 404 unless project
     project.destroy
     redirect '/'
   end
 
-  post :index, with: :project_token do
+  post :index, map: "/:project_token" do
     project = Project.where(token: params[:project_token]).first
     return 404 unless project
     session[:admin] = project.has_password?(params[:password])
-    redirect "/projects/#{project.token}"
+    redirect "/#{project.token}"
   end
 
-  put :index, with: :project_token do
+  put :index, map: "/:project_token" do
     project = Project.where(token: params[:project_token]).first
     return 404 unless project
     if session[:admin]
       project.accept = !project.accept
       project.save!
-      redirect "/projects/#{project.token}"
+      redirect "/#{project.token}"
     else
       return 422
     end
@@ -52,7 +52,7 @@ KptIt.controllers :projects do
   end
 
 
-  post :index, map: "/projects/:project_token/:kind", provides: :js do
+  post :index, map: "/:project_token/:kind", provides: :js do
     @project = Project.where(token: params[:project_token]).first
     return 404 unless @project
 
@@ -72,7 +72,7 @@ KptIt.controllers :projects do
   end
 
 
-  delete :post, map: "/projects/:project_token/:post_token", provides: :js do
+  delete :post, map: "/:project_token/:post_token", provides: :js do
     @project = Project.where(token: params[:project_token]).first
     return 404 unless @project
     post = @project.posts.where(token: params[:post_token]).first
