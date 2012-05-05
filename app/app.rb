@@ -17,6 +17,10 @@ class KptIt < Padrino::Application
     render :index
   end
 
+  error 404 do
+    render :not_found
+  end
+
   ##
   # Caching support
   #
