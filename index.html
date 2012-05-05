@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Kpt-it by tyabe</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tyabe/kpt-it">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tyabe/kpt-it/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tyabe/kpt-it/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Kpt-it</h1>
+          <p>KPTによるふりかえりをリアルタイムで共有するアプリケーション</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tyabe">tyabe</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>kpt-it</h1>
+
+<p><strong>kpt-itはKPTによるふりかえりをリアルタイムで共有するアプリケーションです</strong></p>
+
+<p><a href="https://github.com/prog4designer/hackathon1st/wiki">第1回 #p4dhack</a>で<a href="http://twitter.com/tyabe">@tyabe</a>と<a href="http://twitter.com/nishimuu">@nishimuu</a>が作成しました</p>
+
+<p>see: <a href="http://kpt-it.herokuapp.com/">http://kpt-it.herokuapp.com/</a></p>
+
+<h2>Application details</h2>
+
+<ul>
+<li>based on <a href="http://www.padrinorb.com/">Padrino</a>
+</li>
+<li>distributed under the <a href="http://tyabe.mit-license.org/">MIT License</a>
+</li>
+<li>works with <a href="http://pusher.com/">Pusher</a>
+</li>
+</ul><h2>Requirements</h2>
+
+<ul>
+<li>ruby 1.9.2+</li>
+<li>SQLite or PostgreSQL</li>
+</ul><h2>Usage</h2>
+
+<pre><code>$ git clone git://github.com/tyabe/kpt-it.git
+$ cp kpt-it
+$ mv .env.example .env
+$ vim .env
+$ bundle install
+$ padrino rake ar:create
+$ foreman start
+</code></pre>
+
+<h2>Contribute</h2>
+
+<p>Welcome your help. Please send a pull request. We'll accept good pull requests.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
