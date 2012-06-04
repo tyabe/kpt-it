@@ -117,3 +117,9 @@ a:active {
 #main p {
 	margin-bottom: 10px;
 }
+
+@media (max-width:1260px){
+    a#forkme {
+        display: none;
+    }
+}
