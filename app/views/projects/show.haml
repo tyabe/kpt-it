@@ -60,7 +60,7 @@
 %div#manage-modal(class="modal hide")
   = form_tag "/#{@project.token}", class: 'form-inline', method: :post, id: :manage_form do |f|
     %div.modal-header
-      %button.close(data-dismiss="modal") &times;
+      %a.close(data-dismiss="modal") &times;
       %h3 管理者パスワードを入力してください
     %div.modal-body
       = password_field_tag :password, class: "span4"
