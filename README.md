@@ -23,6 +23,7 @@ $ mv .env.example .env
 $ vim .env
 $ bundle install
 $ padrino rake ar:create
+$ padrino rake ar:migrate
 $ foreman start
 ```
 
