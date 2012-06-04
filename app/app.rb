@@ -7,9 +7,11 @@ class KptIt < Padrino::Application
 
   set :sessions, key: '_kpt_it_session'
 
-  ::Pusher.app_id = ENV['PUSHER_APP_ID']  || Setting.pusher.app_id
-  ::Pusher.key    = ENV['PUSHER_KEY']     || Setting.pusher.key
-  ::Pusher.secret = ENV['PUSHER_SECRET']  || Setting.pusher.secret
+  unless Padrino.env == :production
+    ::Pusher.app_id = ENV['PUSHER_APP_ID']  || Setting.pusher.app_id
+    ::Pusher.key    = ENV['PUSHER_KEY']     || Setting.pusher.key
+    ::Pusher.secret = ENV['PUSHER_SECRET']  || Setting.pusher.secret
+  end
 
   get '/' do
     render :index
