@@ -16,12 +16,20 @@ KptIt.controllers :projects do
   end
 
 
-  get :index, map: "/:project_token" do
+  get :index, map: "/:project_token", :provides => [:html, :md] do
     @project = Project.where(token: params[:project_token]).first
     return 404 unless @project
     @post = Post.new
     @kind = params[:kind] || 'keep'
-    render '/projects/show'
+
+    case content_type
+      when :md
+        partial '/projects/show', :format => "md"
+      when :html
+        render '/projects/show'
+      else
+        render '/projects/show'
+    end
   end
 
   delete :index, map: "/:project_token" do
