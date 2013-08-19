@@ -44,6 +44,9 @@
       %a(data-toggle="modal" href="#manage-modal" class="btn btn-large")
         %i(class="icon-wrench")
         管理機能を使う
+  %a(href="/#{@project.token}.md" class="btn btn-large")
+    %i(class="icon-share")
+    Markdownで表示
 
 %div#post-modal(class="modal hide")
   = form_for @post, "/#{@project.token}/posts", remote: true, id: :post_form do |f|
