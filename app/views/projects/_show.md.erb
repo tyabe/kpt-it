@@ -1,0 +1,11 @@
+# <%= @project.name %>
+<%= @project.description %>
+
+
+<% %w[keep problem try].each do |kind| %>
+## <%= kind.camelize %>
+<% @project.posts.where(kind: kind).each do |post| %>
+* <%= post.body %>
+<% end %>
+
+<% end %>
