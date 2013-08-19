@@ -13,6 +13,7 @@ gem 'mini_record'
 # Test requirements
 gem 'rspec', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
+gem "database_cleaner", "1.0.1", :group => "test"
 
 # Padrino Stable Gem
 gem 'padrino', '0.10.6'
