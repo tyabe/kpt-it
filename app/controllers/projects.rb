@@ -22,14 +22,7 @@ KptIt.controllers :projects do
     @post = Post.new
     @kind = params[:kind] || 'keep'
 
-    case content_type
-      when :md
-        partial '/projects/show', :format => "md"
-      when :html
-        render '/projects/show'
-      else
-        render '/projects/show'
-    end
+    render '/projects/show'
   end
 
   delete :index, map: "/:project_token" do
