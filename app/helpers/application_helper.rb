@@ -13,4 +13,9 @@ KptIt.helpers do
       end
   end
 
+  # line separator -> <br>
+  def br(str)
+    str.gsub(/\r\n|\n|\r/, "<br>")
+  end
+
 end
