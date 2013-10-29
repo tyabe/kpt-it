@@ -17,6 +17,7 @@
       return false;
       }
       });
+    $(".autolink").autolink();
     });
 
 - content_for :menu do
@@ -73,7 +74,8 @@
   %div.row
     %div.span9
       %h1 #{@project.name}
-      %p #{@project.description}
+      %div.autolink
+        = simple_format h(@project.description)
 
 %div.cf(id="main")
   %div.row

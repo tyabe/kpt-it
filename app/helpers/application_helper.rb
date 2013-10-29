@@ -12,5 +12,4 @@ KptIt.helpers do
         name.to_s
       end
   end
-
 end
