@@ -3,3 +3,4 @@
 $("section#post-#{@post.kind}>h3").after(
 "#{js_escape_html(partial('projects/post', locals: {project: @project, post: @post}))}"
 );
+$(".autolink").autolink();
