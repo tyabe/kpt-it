@@ -74,7 +74,8 @@
   %div.row
     %div.span9
       %h1 #{@project.name}
-      %p.autolink #{br h @project.description}
+      %div.autolink
+        = simple_format h(@project.description)
 
 %div.cf(id="main")
   %div.row

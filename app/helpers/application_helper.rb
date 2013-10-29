@@ -12,10 +12,4 @@ KptIt.helpers do
         name.to_s
       end
   end
-
-  # line separator -> <br>
-  def br(str)
-    str.gsub(/\r\n|\n|\r/, "<br>")
-  end
-
 end
