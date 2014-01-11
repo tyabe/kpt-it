@@ -36,3 +36,7 @@ end
 gem 'heroku', :require => false
 gem 'settingslogic'
 gem 'pusher'
+
+group :development, :test do
+  gem 'coveralls', :require => false
+end
