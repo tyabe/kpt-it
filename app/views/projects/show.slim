@@ -1,0 +1,44 @@
+- content_for :head do
+  script src="http://js.pusherapp.com/1.9/pusher.min.js"
+  javascript:
+    $(function () {
+      var pusher  = new Pusher('#{Pusher.key||ENV['PUSHER_KEY']}');
+      var project_token = '#{@project.token}';
+      var channel = pusher.subscribe(project_token);
+      channel.bind("post-event", function(data) { eval(data); });
+      jQuery.each(['keep', 'problem', 'try'], function(index, kind) {
+        $('#post_'+kind).click(function(){
+          if($("#post_body").val().trim()) {
+            $('#post_form').attr('action', '/'+project_token+'/'+kind);
+            $('#post_form').submit();
+            $("#post_body").val('');
+            $("#post_body").focus();
+          } else {
+            return false;
+          }
+        });
+      });
+      $(".autolink").autolink();
+    });
+
+= partial 'projects/menu', locals: {project: @project}
+
+div.page-header
+  div.row
+    div.span9
+      h1 = @project.name
+      div.autolink
+        = simple_format @project.description
+
+div#main.cf
+  div.row
+    - %w[keep problem try].each do |kind|
+      section.left(id="post-#{kind}")
+        h3 = kind.camelize
+        - posts = @project.posts.where(kind: kind)
+        - if posts.count > 0
+          - posts.each do |post|
+            = partial 'projects/post', locals: {project: @project, post: post}
+        - else
+          div.box(id="#{kind}-default")
+            p &nbsp;
