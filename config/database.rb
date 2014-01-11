@@ -17,8 +17,8 @@ ActiveRecord::Base.configurations[:production] = {
 
 ActiveRecord::Base.configurations[:test] = {
   :adapter => 'sqlite3',
-  :database => Padrino.root('db', 'kpt_it_test.db')
-
+  :database => ":memory:",
+  :timeout => 500
 }
 
 # Setup our logger
