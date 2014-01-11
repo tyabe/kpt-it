@@ -6,6 +6,10 @@ __kpt-itはKPTによるふりかえりをリアルタイムで共有するアプ
 
 see: http://kpt-it.herokuapp.com/
 
+[![Build Status](https://travis-ci.org/tyabe/kpt-it.png?branch=master)](https://travis-ci.org/tyabe/kpt-it)
+[![Coverage Status](https://coveralls.io/repos/tyabe/kpt-it/badge.png?branch=master)](https://coveralls.io/r/tyabe/kpt-it?branch=master)
+[![Dependency Status](https://gemnasium.com/tyabe/kpt-it.png)](https://gemnasium.com/tyabe/kpt-it)
+
 ## Application details
 * based on [Padrino](http://www.padrinorb.com/)
 * distributed under the [MIT License](http://tyabe.mit-license.org/)
