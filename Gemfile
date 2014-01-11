@@ -18,7 +18,7 @@ gem 'rack-test', :require => "rack/test", :group => "test"
 gem "database_cleaner", "1.0.1", :group => "test"
 
 # Padrino Stable Gem
-gem 'padrino', '0.10.6'
+gem 'padrino', '0.11.4'
 
 gem 'thin'
 

@@ -20,9 +20,7 @@ RSpec.configure do |conf|
   end
 end
 
-def app
-  ##
-  # You can handle all padrino applications using instead:
-  #   Padrino.application
-  KptIt.tap { |app|  }
+def app(app = nil, &blk)
+  @app ||= block_given? ? app.instance_eval(&blk) : app
+  @app ||= Padrino.application
 end

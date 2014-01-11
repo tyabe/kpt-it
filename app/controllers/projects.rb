@@ -1,4 +1,4 @@
-KptIt.controllers :projects do
+KptIt::App.controllers :projects do
 
   get :new, map: '/new' do
     @project = Project.new

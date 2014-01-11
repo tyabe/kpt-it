@@ -5,3 +5,5 @@
 :script: jquery
 :renderer: haml
 :stylesheet: scss
+:namespace: KptIt
+:migration_format: number

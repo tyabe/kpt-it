@@ -28,9 +28,9 @@
 Padrino.configure_apps do
   # enable :sessions
   set :session_secret, '09cfa9dfe56277e3e712e9781ad96c50f633887c4ca2f2e5fc2bf6326f30c8fd'
-
+  set :protection, :except => :path_traversal
   mime_type :md, "text/x-markdown"
 end
 
 # Mounts the core application for this project
-Padrino.mount("KptIt").to('/')
+Padrino.mount('KptIt::App', app_file: Padrino.root('app/app.rb')).to('/')
