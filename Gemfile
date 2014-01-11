@@ -10,6 +10,7 @@ gem 'sinatra-flash', :require => 'sinatra/flash'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'sass'
 gem 'haml'
+gem 'activerecord', '>= 3.2', '< 4.0', :require => 'active_record'
 gem 'mini_record'
 
 # Test requirements
