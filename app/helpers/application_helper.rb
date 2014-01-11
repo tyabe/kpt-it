@@ -1,6 +1,6 @@
 # Helper methods defined here can be accessed in any controller or view in the application
 
-KptIt.helpers do
+KptIt::App.helpers do
   def alert_message(name)
     "alert-message " <<
       case name.to_sym

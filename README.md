@@ -12,7 +12,7 @@ see: http://kpt-it.herokuapp.com/
 * works with [Pusher](http://pusher.com/)
 
 ## Requirements
-* ruby 1.9.2+
+* ruby 2.1.0
 * SQLite or PostgreSQL
 
 ## Usage
@@ -20,9 +20,9 @@ see: http://kpt-it.herokuapp.com/
 $ git clone git://github.com/tyabe/kpt-it.git
 $ cp kpt-it
 $ mv .env.example .env
-$ vim .env
+$ vim .env # Edit your pusher settings
 $ bundle install
-$ padrino rake ar:create
+$ bundle exec rake db:create
 $ foreman start
 ```
 
