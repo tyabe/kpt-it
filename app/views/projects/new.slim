@@ -1,0 +1,29 @@
+- form_for @project, '/new', class: 'form-horizontal well' do |f|
+  - if @project.errors.any?
+    div.alert.alert-error
+      ul.unstyled
+        li = error_messages_for :project
+
+  - field_set_tag do
+    legend ふりかえりの情報を入力してください
+    div.control-group
+      = f.label :name, class: "control-label"
+      div.controls
+        = f.text_field :name, class: 'span6'
+    div.control-group
+      = f.label :description, class: "control-label"
+      div.controls
+        = f.text_area :description, rows: 3, class: 'span6'
+        p.help-block
+          i.icon-exclamation-sign
+          | 機密情報や個人情報は入力しないでください
+    div.control-group
+      = f.label :password, class: "control-label"
+      div.controls
+        = f.text_field :password, class: 'span6'
+        p.help-block
+          i.icon-exclamation-sign
+          | 削除など管理者としての操作時に使用します
+
+  div.form-action
+    = submit_tag 'ふりかえりを開始する', class: "btn btn-large btn-primary"

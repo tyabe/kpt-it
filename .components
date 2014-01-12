@@ -3,7 +3,7 @@
 :test: rspec
 :mock: none
 :script: jquery
-:renderer: haml
+:renderer: slim
 :stylesheet: scss
 :namespace: KptIt
 :migration_format: number

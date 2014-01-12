@@ -1,5 +1,4 @@
--# coding: utf-8
-%div.box(id="#{post.token}")
+div.box id="#{post.token}"
   = link_to "&times;".html_safe, "/#{project.token}/#{post.token}", class: "close", confirm: "削除してよろしいですか？", method: :delete, remote: true
-  %div.autolink
-    = simple_format h(post.body)
+  div.autolink
+    = simple_format post.body

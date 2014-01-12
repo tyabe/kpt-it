@@ -15,9 +15,7 @@ describe "ProjectsController" do
     end
 
     it "body should contains project name" do
-      expected_html = <<HTML
-<h1>#{project_name}</h1>
-HTML
+      expected_html = "<h1>#{project_name}</h1>"
       last_response.body.should include expected_html
     end
   end

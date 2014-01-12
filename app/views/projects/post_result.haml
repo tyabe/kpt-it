@@ -1,6 +1,0 @@
-- if @project.posts.where(kind: @post.kind).count - 1 <= 0
-  $("section#post-#{@post.kind}>div##{@post.kind}-default").remove();
-$("section#post-#{@post.kind}>h3").after(
-"#{js_escape_html(partial('projects/post', locals: {project: @project, post: @post}))}"
-);
-$(".autolink").autolink();
