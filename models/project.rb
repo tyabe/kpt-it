@@ -1,20 +1,20 @@
 class Project < ActiveRecord::Base
 
   # fields
-  field :name, as: :string
-  field :description, as: :text
-  field :token, as: :string
-  field :crypted_password, as: :string
-  field :accept, as: :boolean, default: true
+  field :name,              as: :string
+  field :description,       as: :text
+  field :token,             as: :string
+  field :crypted_password,  as: :string
+  field :accept,            as: :boolean, default: true
 
-  timestamps
+  field :created_at, :updated_at, as: :datetime
 
   attr_accessor :password
 
   # validations
   validates_presence_of :name
   validates_presence_of :password, unless: :crypted_password?
-  validates_length_of :name, in: 0..30
+  validates_length_of :name, in: 0..30, if: :name?
 
   # referenced
   has_many :posts, dependent: :destroy
@@ -36,7 +36,9 @@ class Project < ActiveRecord::Base
   end
 
   def encrypt_password
-    self.crypted_password = ::BCrypt::Password.create(password)
+    value = ::BCrypt::Password.create(password)
+    value = value.force_encoding(Encoding::UTF_8) if value.respond_to?(:encoding) && value.encoding == Encoding::ASCII_8BIT
+    self.crypted_password = value
   end
 
 end

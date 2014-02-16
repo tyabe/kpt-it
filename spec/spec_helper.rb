@@ -1,7 +1,9 @@
 require 'database_cleaner'
 
-PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
+RACK_ENV = 'test' unless defined?(RACK_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
+
+ActiveRecord::Base.logger = Padrino.logger
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
@@ -28,4 +30,14 @@ end
 if ENV['TRAVIS']
   require 'coveralls'
   Coveralls.wear!
+end
+
+module ::ActiveModel::Validations
+  def errors_on(attribute, options = {})
+    valid_args = [options[:context]].compact
+    self.valid?(*valid_args)
+
+    [self.errors[attribute]].flatten.compact
+  end
+  alias :error_on :errors_on
 end

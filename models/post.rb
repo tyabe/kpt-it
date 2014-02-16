@@ -1,11 +1,11 @@
 class Post < ActiveRecord::Base
 
   # fields
-  field :kind, as: :string
-  field :body, as: :text
+  field :kind,  as: :string
+  field :body,  as: :text
   field :token, as: :string
 
-  timestamps
+  field :created_at, :updated_at, as: :datetime
 
   # validations
   validates_presence_of :kind, :body
@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   belongs_to :project
 
   # scopes
-  default_scope order('created_at desc')
+  default_scope { order('created_at desc') }
 
   # callbacks
   before_create :generate_token

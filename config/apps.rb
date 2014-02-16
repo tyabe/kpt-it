@@ -29,6 +29,7 @@ Padrino.configure_apps do
   # enable :sessions
   set :session_secret, '09cfa9dfe56277e3e712e9781ad96c50f633887c4ca2f2e5fc2bf6326f30c8fd'
   set :protection, :except => :path_traversal
+  set :protect_from_csrf, true
   mime_type :md, "text/x-markdown"
 end
 
