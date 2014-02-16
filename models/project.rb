@@ -36,7 +36,9 @@ class Project < ActiveRecord::Base
   end
 
   def encrypt_password
-    self.crypted_password = ::BCrypt::Password.create(password)
+    value = ::BCrypt::Password.create(password)
+    value = value.force_encoding(Encoding::UTF_8) if value.respond_to?(:encoding) && value.encoding == Encoding::ASCII_8BIT
+    self.crypted_password = value
   end
 
 end
