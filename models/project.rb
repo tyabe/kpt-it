@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   field :crypted_password,  as: :string
   field :accept,            as: :boolean, default: true
 
-  timestamps
+  field :created_at, :updated_at, as: :datetime
 
   attr_accessor :password
 

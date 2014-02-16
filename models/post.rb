@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   field :body,  as: :text
   field :token, as: :string
 
-  timestamps
+  field :created_at, :updated_at, as: :datetime
 
   # validations
   validates_presence_of :kind, :body
