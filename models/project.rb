@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
   # validations
   validates_presence_of :name
   validates_presence_of :password, unless: :crypted_password?
-  validates_length_of :name, in: 0..30
+  validates_length_of :name, in: 0..30, if: :name?
 
   # referenced
   has_many :posts, dependent: :destroy
