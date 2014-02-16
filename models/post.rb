@@ -1,8 +1,8 @@
 class Post < ActiveRecord::Base
 
   # fields
-  field :kind, as: :string
-  field :body, as: :text
+  field :kind,  as: :string
+  field :body,  as: :text
   field :token, as: :string
 
   timestamps

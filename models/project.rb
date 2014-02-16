@@ -1,11 +1,11 @@
 class Project < ActiveRecord::Base
 
   # fields
-  field :name, as: :string
-  field :description, as: :text
-  field :token, as: :string
-  field :crypted_password, as: :string
-  field :accept, as: :boolean, default: true
+  field :name,              as: :string
+  field :description,       as: :text
+  field :token,             as: :string
+  field :crypted_password,  as: :string
+  field :accept,            as: :boolean, default: true
 
   timestamps
 
