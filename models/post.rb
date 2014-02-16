@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   belongs_to :project
 
   # scopes
-  default_scope order('created_at desc')
+  default_scope { order('created_at desc') }
 
   # callbacks
   before_create :generate_token
