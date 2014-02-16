@@ -4,7 +4,6 @@ ruby "2.1.0"
 
 # Project requirements
 gem 'rake'
-gem 'sinatra-flash', :require => 'sinatra/flash'
 
 # Component requirements
 gem 'slim'
