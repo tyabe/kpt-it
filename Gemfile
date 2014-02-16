@@ -22,7 +22,7 @@ end
 # Padrino Stable Gem
 gem 'padrino', '0.12.0'
 
-gem 'thin'
+gem 'unicorn'
 
 group :production do
   gem 'pg'
