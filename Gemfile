@@ -9,16 +9,18 @@ gem 'rake'
 gem 'slim'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'sass'
-gem 'activerecord', '>= 3.2', '< 4.0', :require => 'active_record'
+gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mini_record'
 
 # Test requirements
-gem 'rspec', :group => "test"
-gem 'rack-test', :require => "rack/test", :group => "test"
-gem "database_cleaner", "1.0.1", :group => "test"
+group :test do
+  gem 'rspec'
+  gem 'rack-test', :require => "rack/test"
+  gem "database_cleaner", "1.0.1"
+end
 
 # Padrino Stable Gem
-gem 'padrino', '0.11.4'
+gem 'padrino', '0.12.0'
 
 gem 'thin'
 
