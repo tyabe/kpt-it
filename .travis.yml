@@ -4,7 +4,7 @@ install:
   - gem update --system
   - bundle update
 rvm:
-  - 2.1.0
+  - 2.1.1
 branches:
   only:
     - master

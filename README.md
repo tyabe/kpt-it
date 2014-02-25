@@ -16,7 +16,7 @@ see: http://kpt-it.herokuapp.com/
 * works with [Pusher](http://pusher.com/)
 
 ## Requirements
-* ruby 2.1.0
+* ruby 2.1.1
 * SQLite or PostgreSQL
 
 ## Usage
