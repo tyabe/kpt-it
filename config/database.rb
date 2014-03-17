@@ -1,7 +1,6 @@
 ActiveRecord::Base.configurations[:development] = {
   :adapter => 'sqlite3',
   :database => Padrino.root('db', 'kpt_it_development.db')
-
 }
 
 postgres = URI.parse(ENV['DATABASE_URL'] || '')
@@ -48,3 +47,6 @@ ActiveSupport.escape_html_entities_in_json = false
 
 # Now we can estabilish connection with our db
 ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
+
+# Timestamps are in the utc by default.
+ActiveRecord::Base.default_timezone = :utc
