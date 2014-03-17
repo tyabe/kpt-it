@@ -34,7 +34,6 @@ group :development do
   gem 'foreman'
 end
 
-gem 'heroku', :require => false
 gem 'settingslogic'
 gem 'pusher'
 
