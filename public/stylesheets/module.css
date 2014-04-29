@@ -3,6 +3,15 @@
  style info : ヘッダーやフッターなどサイト内共通
 =================================================================== */
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  margin-bottom: 50px;
+}
+
 /*----------------------------------------------------
 	header#globalHeader
 ----------------------------------------------------*/
@@ -10,29 +19,22 @@ header#globalHeader {
 	background:#333;
 	min-height:60px;
 	padding:10px 0 0 0;
-	margin:0;
+	margin-bottom:20px;
 	position:relative;
 	z-index:10;
 }
-
 
 
 /*----------------------------------------------------
 	#contents（メインとサイド）
 ----------------------------------------------------*/
 #contents {
-	width:960px;
-	margin:0 auto;
-	/zoom: 1;
 	text-align:left;
-	position:relative;
-	margin-bottom: 20px;
-	z-index:100;
+	margin-bottom: 35px;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
-#contents #main.cf {
-	padding:100px 0 0 0;
-}
 
 /*----------------------------------------------------
 	footer#globalFooter
@@ -41,24 +43,17 @@ footer#globalFooter {
 	background:#333;
 	clear: both;
 	color:#fff;
-	
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
-footer#globalFooter ul {
-	list-style: none;
-}
-
-footer#globalFooter ul li {
-	display: inline;
-	margin-right: 10px;
-}
 
 /* copyright
 ----------------------------------------------------*/
 footer#globalFooter p.copyright {
-	padding:5px;
+  padding:5px;
+  margin: 1px 0px;
 }
 
-footer#globalFooter p.copyright small {
-}
 

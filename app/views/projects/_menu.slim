@@ -1,49 +1,31 @@
-- content_for :menu do
+- if session[:admin]
   - if project.accept?
-    a.btn.btn-info.btn-large<> data-toggle="modal" href="#post-modal"
-      i.icon-edit.icon-white<>
-      | 投稿する
-    - if session[:admin]
-      a.btn.btn-large<> data-confirm="投稿の受付を終了してよろしいですか？" data-method="put" rel="nofollow" href="/#{project.token}"
-        i.icon-stop<>
-        | 受付終了
-    - else
-      a.btn.btn-large<> data-toggle="modal" href="#manage-modal"
-        i.icon-wrench<>
-        | 管理機能を使う
+    a.btn.btn-danger<> data-confirm="投稿の受付を終了してよろしいですか？" data-method="put" rel="nofollow" href="/#{project.token}"
+      i.glyphicon.glyphicon-stop
+      | 受付終了
   - else
-    - if session[:admin]
-      a.btn.btn-danger.btn-large<> data-confirm="削除してよろしいですか？" data-method="delete" rel="nofollow" href="/#{project.token}"
-        i.icon-trash.icon-white<>
-        | 削除する
-      a.btn.btn-large<> data-confirm="投稿の受付を再開してよろしいですか？" data-method="put" rel="nofollow" href="/#{project.token}"
-        i.icon-play
-        | 受付再開
-    - else
-      a.btn.btn-large<> data-toggle="modal" href="#manage-modal"
-        i.icon-wrench<>
-        | 管理機能を使う
-  a.btn.btn-large<> href="/#{project.token}.md"
-    i.icon-share<>
-    | Markdownで表示
+    a.btn.btn-danger<> data-confirm="削除してよろしいですか？" data-method="delete" rel="nofollow" href="/#{project.token}"
+      i.glyphicon.glyphicon-trash
+      | 削除
+    a.btn.btn-info<> data-confirm="投稿の受付を再開してよろしいですか？" data-method="put" rel="nofollow" href="/#{project.token}"
+      i.glyphicon.glyphicon-play
+      | 受付再開
+- else
+  a.btn.btn-warning<> data-toggle="modal" data-target="#manage-modal"
+    i.glyphicon.glyphicon-wrench
+    | 管理機能
+a.btn.btn-success<> href="/#{project.token}.md"
+  i.glyphicon.glyphicon-file
+  | Markdown
 
-div#manage-modal.modal.hide
-  = form_tag "/#{@project.token}", class: 'form-inline', method: :post, id: :manage_form do |f|
-    div.modal-header
-      a.close data-dismiss="modal" &times;
-      h3 管理者パスワードを入力してください
-    div.modal-body
-      = password_field_tag :password, class: "span4"
-      = submit_tag '送信する', class: "btn btn-primary"
-
-div#post-modal.modal.hide
-  = form_for @post, "/#{@project.token}/posts", remote: true, id: :post_form do |f|
-    div.modal-header
-      button.close data-dismiss="modal" &times;
-      h3 ふりかえりを投稿する
-    div.modal-body
-      = f.text_area :body, class: "span6", rows: 5, placeholder: "ふりかえりを入力してください"
-    div.modal-footer
-      a href="#" id='post_keep' class='btn btn-large btn-success' Keep
-      a href="#" id='post_problem' class='btn btn-large btn-success' Problem
-      a href="#" id='post_try' class='btn btn-large btn-success' Try
+div#manage-modal.modal
+  div.modal-dialog
+    div.modal-content
+      div.modal-header
+        a.close data-dismiss="modal" aria-hidden="true" &times;
+        h4 管理者パスワードを入力してください
+      div.modal-body
+        = form_tag "/#{@project.token}", class: 'form-inline', method: :post, id: :manage_form do |f|
+          div.form-group
+            = password_field_tag :password, class: "form-control"
+          =<> submit_tag '送信する', class: "btn btn-primary"

@@ -1,29 +1,33 @@
-= form_for @project, '/new', class: 'form-horizontal well' do |f|
+= form_for @project, '/new', class: 'form-horizontal well', role: :form do |f|
   - if @project.errors.any?
-    div.alert.alert-error
+    div.alert.alert-danger
       ul
         - @project.errors.full_messages.each do |error_message|
           li = error_message
 
-  = field_set_tag do
-    legend ふりかえりの情報を入力してください
-    div.control-group
-      = f.label :name, class: "control-label"
-      div.controls
-        = f.text_field :name, class: 'span6'
-    div.control-group
-      = f.label :description, class: "control-label"
-      div.controls
-        = f.text_area :description, rows: 3, class: 'span6'
+  legend ふりかえりの情報を入力してください
+
+  div.form-group
+    = f.label :name, class: 'col-sm-2'
+    div.col-sm-8
+      div class=('has-error' if has_error? @project, :name)
+        = f.text_field :name, required: true, class: 'form-control'
+  div.form-group
+    = f.label :description, class: 'col-sm-2'
+    div.col-sm-8
+      = f.text_area :description, rows: 3, class: 'form-control'
+      div.has-warning
         p.help-block
-          i.icon-exclamation-sign
+          i.glyphicon.glyphicon-exclamation-sign<>
           | 機密情報や個人情報は入力しないでください
-    div.control-group
-      = f.label :password, class: "control-label"
-      div.controls
-        = f.text_field :password, class: 'span6'
+  div.form-group
+    = f.label :password, class: "col-sm-2"
+    div.col-sm-8
+      div class=('has-error' if has_error? @project, :password)
+        = f.text_field :password, required: true, class: 'form-control'
+      div.has-warning
         p.help-block
-          i.icon-exclamation-sign
+          i.glyphicon.glyphicon-exclamation-sign<>
           | 削除など管理者としての操作時に使用します
 
   div.form-action
