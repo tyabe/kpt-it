@@ -12,4 +12,8 @@ KptIt::App.helpers do
         name.to_s
       end
   end
+
+  def has_error?(model, field)
+    model.errors.messages[field.to_sym].present?
+  end
 end

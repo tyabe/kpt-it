@@ -1,8 +1,13 @@
 ja:
-  models:
-    project:
-      name: ふりかえり
-      attributes:
+  activerecord:
+    models:
+      project: &project_name ふりかえり
+    attributes:
+      project: &project_attributes
         name: 名称
         description: 説明
         password: 管理者パスワード
+  models:
+    project:
+      name: *project_name
+      attributes: *project_attributes

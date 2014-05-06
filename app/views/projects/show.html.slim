@@ -1,4 +1,4 @@
-- content_for :head do
+- content_for :footer do
   script src="http://js.pusherapp.com/1.9/pusher.min.js"
   javascript:
     $(function () {
@@ -24,15 +24,22 @@
 = partial 'projects/menu', locals: {project: @project}
 
 div.page-header
-  div.row
-    div.span9
-      h1 = @project.name
-      div.autolink
-        = simple_format @project.description
+  h1 = @project.name
+  div.autolink
+    = simple_format @project.description
+
+- if @project.accept?
+  = form_for @post, "/#{@project.token}/posts", remote: true, id: :post_form do |f|
+    div.form-group
+      = f.text_area :body, class: "form-control", rows: 5, placeholder: "ふりかえりを入力してください"
+    p
+      a#post_keep.btn.btn-lg.btn-success<> href="#" Keep
+      a#post_problem.btn.btn-lg.btn-success<> href="#" Problem
+      a#post_try.btn.btn-lg.btn-success<> href="#" Try
 
 div#main.cf
-  div.row
-    - %w[keep problem try].each do |kind|
+  - %w[keep problem try].each do |kind|
+    div.col-md-4
       section.left(id="post-#{kind}")
         h3 = kind.camelize
         - posts = @project.posts.where(kind: kind)
