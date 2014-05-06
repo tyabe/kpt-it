@@ -22,5 +22,13 @@ module KptIt
       render :not_found
     end
 
+    error ActiveRecord::RecordNotFound do
+      render :not_found
+    end
+
+    error Sinatra::NotFound do
+      render :not_found
+    end
+
   end
 end
