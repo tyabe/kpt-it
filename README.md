@@ -4,7 +4,7 @@ __kpt-itはKPTによるふりかえりをリアルタイムで共有するアプ
 
 [第1回 #p4dhack](https://github.com/prog4designer/hackathon1st/wiki)で[@tyabe](http://twitter.com/tyabe)と[@nishimuu](http://twitter.com/nishimuu)が作成しました
 
-see: http://kpt-it.herokuapp.com/
+see: https://kpt-it.herokuapp.com/
 
 [![Build Status](https://travis-ci.org/tyabe/kpt-it.png?branch=master)](https://travis-ci.org/tyabe/kpt-it)
 [![Coverage Status](https://coveralls.io/repos/tyabe/kpt-it/badge.png?branch=master)](https://coveralls.io/r/tyabe/kpt-it?branch=master)
