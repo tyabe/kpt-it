@@ -6,10 +6,10 @@ describe Post do
       expect(Post.new(kind: 'keep', body: 'test')).to be_valid
     end
     it 'invalid without a kind' do
-      expect(Post.new(body: 'test')).to have(1).errors_on(:kind)
+      expect((Post.new(body: 'test')).errors_on(:kind).size).to eql 1
     end
     it 'invalid without a body' do
-      expect(Post.new(kind: 'keep')).to have(1).errors_on(:body)
+      expect((Post.new(kind: 'keep')).errors_on(:body).size).to eql 1
     end
   end
   describe 'relations' do

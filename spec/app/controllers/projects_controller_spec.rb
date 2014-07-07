@@ -29,12 +29,12 @@ describe "ProjectsController" do
     end
 
     it "return success code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "body should contains project name" do
       expected_html = "<h1>#{project_name}</h1>"
-      last_response.body.should include expected_html
+      expect(last_response.body).to include expected_html
     end
   end
 
@@ -44,14 +44,14 @@ describe "ProjectsController" do
     end
 
     it "return success code" do
-      last_response.should be_ok
+      expect(last_response).to be_ok
     end
 
     it "body should contains project name" do
       expected_markdown = <<MARKDOWN
 # #{project_name}
 MARKDOWN
-      last_response.body.should include expected_markdown
+      expect(last_response.body).to include expected_markdown
     end
   end
 
@@ -59,29 +59,29 @@ MARKDOWN
     context 'with invalid password' do
       before { request_to :post, "/#{project_token}", { password: 'dummy' } }
       it '' do
-        expect(session[:admin]).to be_false
+        expect(session[:admin]).to be_falsey
         expect(last_response).to be_redirect
       end
     end
     context 'with valid password' do
       before { request_to :post, "/#{project_token}", { password: project.password } }
       it '' do
-        expect(session[:admin]).to be_true
+        expect(session[:admin]).to be_truthy
         expect(last_response).to be_redirect
       end
     end
   end
 
   describe "PUT '/:project_token'" do
-    pending
+    skip
   end
 
   describe "POST '/:project_token/:kind'" do
-    pending
+    skip
   end
 
   describe "DELETE '/:project_token/:kind'" do
-    pending
+    skip
   end
 
 end

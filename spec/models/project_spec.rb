@@ -6,16 +6,16 @@ describe Project do
       expect(Project.new(name: 'test_project', password: 'secret')).to be_valid
     end
     it 'invalid without a name' do
-      expect(Project.new(password: 'secret')).to have(1).errors_on(:name)
+      expect(Project.new(password: 'secret').errors_on(:name).size).to eql 1
     end
     it 'invalid without a password' do
-      expect(Project.new(name: 'test_project')).to have(1).errors_on(:password)
+      expect(Project.new(name: 'test_project').errors_on(:password).size).to eql 1
     end
     it 'is invalid if length of name is less than 0' do
-      expect(Project.new(name: '', password: 'secret')).to have(1).errors_on(:name)
+      expect(Project.new(name: '', password: 'secret').errors_on(:name).size).to eql 1
     end
     it 'is invalid if length of name is greater than 30' do
-      expect(Project.new(name: '_'.tap{|c|6.times{c<<'test_'}}, password: 'secret')).to have(1).errors_on(:name)
+      expect(Project.new(name: '_'.tap{|c|6.times{c<<'test_'}}, password: 'secret').errors_on(:name).size).to eql 1
     end
   end
   describe 'relations' do
