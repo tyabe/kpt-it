@@ -9,7 +9,7 @@ gem 'rake'
 gem 'slim'
 gem 'bcrypt-ruby', :require => "bcrypt"
 gem 'sass'
-gem 'activerecord', '>= 3.1', :require => 'active_record'
+gem 'activerecord', '4.1.2', :require => 'active_record'
 gem 'mini_record'
 
 # Test requirements
