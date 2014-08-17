@@ -1,0 +1,17 @@
+{
+  "name": "kpt-it",
+  "description": "kpt-itはKPTによるふりかえりをリアルタイムで共有するアプリケーションです",
+  "repository": "https://github.com/tyabe/kpt-it",
+  "keywords": [ "kpt", "padrino" ],
+  "addons": [
+    "pusher:sandbox",
+    "loggly:mole",
+    "pgbackups:plus",
+    "heroku-postgresql:dev"
+  ],
+  "env": {
+    "TZ": "Asia/Tokyo",
+    "RACK_ENV": "production",
+    "BUNDLE_WITHOUT": "development:test"
+  }
+}

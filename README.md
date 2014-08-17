@@ -10,6 +10,8 @@ see: https://kpt-it.herokuapp.com/
 [![Coverage Status](https://coveralls.io/repos/tyabe/kpt-it/badge.png?branch=master)](https://coveralls.io/r/tyabe/kpt-it?branch=master)
 [![Dependency Status](https://gemnasium.com/tyabe/kpt-it.png)](https://gemnasium.com/tyabe/kpt-it)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 ## Application details
 * based on [Padrino](http://www.padrinorb.com/)
 * distributed under the [MIT License](http://tyabe.mit-license.org/)
