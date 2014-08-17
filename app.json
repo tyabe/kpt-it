@@ -14,8 +14,6 @@
     "heroku-postgresql"
   ],
   "env": {
-    "TZ": "Asia/Tokyo",
-    "RACK_ENV": "production",
-    "BUNDLE_WITHOUT": "development:test"
+    "TZ": "Asia/Tokyo"
   }
 }
