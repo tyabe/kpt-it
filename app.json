@@ -1,13 +1,17 @@
 {
   "name": "kpt-it",
   "description": "kpt-itはKPTによるふりかえりをリアルタイムで共有するアプリケーションです",
+  "website": "https://kpt-it.herokuapp.com/",
   "repository": "https://github.com/tyabe/kpt-it",
-  "keywords": [ "kpt", "padrino" ],
+  "keywords": [
+    "kpt",
+    "padrino"
+  ],
   "addons": [
-    "pusher:sandbox",
-    "loggly:mole",
-    "pgbackups:plus",
-    "heroku-postgresql:dev"
+    "pusher",
+    "loggly",
+    "pgbackups",
+    "heroku-postgresql"
   ],
   "env": {
     "TZ": "Asia/Tokyo",
