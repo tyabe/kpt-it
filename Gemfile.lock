@@ -1,20 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (4.1.4)
-      activesupport (= 4.1.4)
+    activemodel (4.2.0)
+      activesupport (= 4.2.0)
       builder (~> 3.1)
-    activerecord (4.1.4)
-      activemodel (= 4.1.4)
-      activesupport (= 4.1.4)
-      arel (~> 5.0.0)
-    activesupport (4.1.4)
-      i18n (~> 0.6, >= 0.6.9)
+    activerecord (4.2.0)
+      activemodel (= 4.2.0)
+      activesupport (= 4.2.0)
+      arel (~> 6.0)
+    activesupport (4.2.0)
+      i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.1)
+      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    arel (5.0.1.20140414130214)
+    arel (6.0.0)
     bcrypt (3.1.7)
     builder (3.2.2)
     coderay (1.1.0)
@@ -37,7 +37,7 @@ GEM
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
     httpclient (2.4.0)
-    i18n (0.6.11)
+    i18n (0.7.0)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -46,7 +46,7 @@ GEM
     mime-types (1.25.1)
     mini_record (0.4.1)
       activerecord (>= 3.2.0)
-    minitest (5.4.0)
+    minitest (5.5.0)
     moneta (0.7.20)
     multi_json (1.10.1)
     netrc (0.7.7)
@@ -155,7 +155,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord (= 4.1.4)
+  activerecord (= 4.2.0)
   bcrypt
   coveralls
   database_cleaner (= 1.0.1)
