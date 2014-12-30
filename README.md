@@ -6,9 +6,9 @@ __kpt-itはKPTによるふりかえりをリアルタイムで共有するアプ
 
 see: https://kpt-it.herokuapp.com/
 
-[![Build Status](https://travis-ci.org/tyabe/kpt-it.png?branch=master)](https://travis-ci.org/tyabe/kpt-it)
-[![Coverage Status](https://coveralls.io/repos/tyabe/kpt-it/badge.png?branch=master)](https://coveralls.io/r/tyabe/kpt-it?branch=master)
-[![Dependency Status](https://gemnasium.com/tyabe/kpt-it.png)](https://gemnasium.com/tyabe/kpt-it)
+[![Build Status](https://travis-ci.org/tyabe/kpt-it.svg?branch=master)](https://travis-ci.org/tyabe/kpt-it)
+[![Coverage Status](https://img.shields.io/coveralls/tyabe/kpt-it.svg)](https://coveralls.io/r/tyabe/kpt-it?branch=master)
+[![Dependency Status](https://gemnasium.com/tyabe/kpt-it.svg)](https://gemnasium.com/tyabe/kpt-it)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
