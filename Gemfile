@@ -1,13 +1,13 @@
 source 'https://rubygems.org'
 
-ruby "2.1.2"
+ruby "2.2.0"
 
 # Project requirements
 gem 'rake'
 
 # Component requirements
 gem 'slim'
-gem 'bcrypt-ruby', :require => "bcrypt"
+gem 'bcrypt'
 gem 'sass'
 gem 'activerecord', '4.1.4', :require => 'active_record'
 gem 'mini_record'
