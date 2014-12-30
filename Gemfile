@@ -20,7 +20,7 @@ group :test do
 end
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.3'
+gem 'padrino', '0.12.4'
 
 gem 'puma'
 
