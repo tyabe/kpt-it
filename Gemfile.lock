@@ -92,7 +92,7 @@ GEM
       slop (~> 3.4)
     pry-padrino (0.1.2)
       pry (>= 0.8)
-    puma (2.12.3)
+    puma (2.13.4)
     pusher (0.14.5)
       httpclient (~> 2.5)
       multi_json (~> 1.0)
@@ -143,7 +143,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    tins (1.5.4)
+    tins (1.6.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
