@@ -92,7 +92,7 @@ GEM
       slop (~> 3.4)
     pry-padrino (0.1.2)
       pry (>= 0.8)
-    puma (2.14.0)
+    puma (3.12.4)
     pusher (0.15.0)
       httpclient (~> 2.5)
       multi_json (~> 1.0)
